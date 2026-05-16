@@ -4,6 +4,40 @@ Production-minded FastAPI backend for **multi-team task management**: JWT authen
 
 ---
 
+## Live Demo
+
+API deployed on Railway:  
+**https://taskmanager-production-9a8d.up.railway.app/health**
+
+Interactive docs: [/docs](https://taskmanager-production-9a8d.up.railway.app/docs)
+
+Health check:
+
+```bash
+curl https://taskmanager-production-9a8d.up.railway.app/health
+curl https://taskmanager-production-9a8d.up.railway.app/health/ready
+```
+
+Register a user:
+
+```bash
+curl -s -X POST https://taskmanager-production-9a8d.up.railway.app/auth/register \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"alice@example.com","username":"alice","password":"password123"}' | python3 -m json.tool
+```
+
+Expected response:
+
+```json
+{
+    "id": 1,
+    "email": "alice@example.com",
+    "username": "alice",
+    "is_active": true
+}
+```
+---
+
 ## Highlights
 
 - **FastAPI** + **Pydantic v2** validation (`Field` constraints on users, teams, tasks).
